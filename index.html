@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creadora de contenido UGC en Madrid · licrat</title>
+<meta name="description" content="UGC para marcas de belleza, hogar y tech: vídeos verticales y fotos que no parecen anuncios. Contenido auténtico, montado y listo para publicar. Por Arancha, en Madrid.">
+<meta name="author" content="Arancha (licrat)">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://licrat.com/">
+
+<!-- Open Graph (compartir en LinkedIn, WhatsApp, Facebook...) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="licrat">
+<meta property="og:title" content="Creadora de contenido UGC en Madrid · licrat">
+<meta property="og:description" content="UGC para marcas de belleza, hogar y tech: vídeos y fotos que no parecen anuncios. Por Arancha, en Madrid.">
+<meta property="og:url" content="https://licrat.com/">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://licrat.com/og-image.jpg">
+<meta property="og:image:alt" content="licrat — contenido UGC para marcas">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Creadora de contenido UGC en Madrid · licrat">
+<meta name="twitter:description" content="UGC para marcas de belleza, hogar y tech: vídeos y fotos que no parecen anuncios.">
+<meta name="twitter:image" content="https://licrat.com/og-image.jpg">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%237C3AED'/%3E%3Ctext%20x='32'%20y='46'%20text-anchor='middle'%20font-family='Arial,sans-serif'%20font-size='40'%20font-weight='700'%20fill='white'%3El%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FCFCFF;
+    --paper-2:#F1EEFB;
+    --ink:#1B1433;
+    --ink-soft:#4D4668;
+    --coral:#7C3AED;   /* morado (primario / belleza) */
+    --teal:#12BEC6;    /* turquesa (hogar) */
+    --violet:#9B4DFF;  /* morado claro (acentos) */
+    --line:#E8E4F6;
+    --shadow:0 18px 40px -20px rgba(27,20,51,.32);
+    --display:'Sora',sans-serif;
+    --body:'Inter',system-ui,sans-serif;
+    --mono:'DM Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{width:min(1120px,92vw);margin-inline:auto}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:color-mix(in srgb,var(--paper) 88%,transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-in{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+  .brand{font-family:var(--display);font-weight:800;font-size:1.45rem;letter-spacing:-.02em}
+  .brand b{color:var(--coral)}
+  .nav-links{display:flex;gap:22px;align-items:center}
+  .nav-links a{font-size:.92rem;font-weight:500;color:var(--ink-soft);transition:color .2s}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-cta{
+    font-family:var(--mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;
+    background:var(--ink);color:var(--paper);padding:11px 18px;border-radius:100px;font-weight:500;
+    transition:transform .2s, background .2s;
+  }
+  .nav-cta:hover{transform:translateY(-2px);background:var(--coral)}
+  .burger{display:none;background:none;border:0;cursor:pointer;flex-direction:column;gap:5px}
+  .burger span{width:24px;height:2px;background:var(--ink);display:block}
+
+  /* ---------- HERO ---------- */
+  header{padding:72px 0 36px;position:relative}
+  .eyebrow{
+    font-family:var(--mono);font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;
+    color:var(--coral);display:inline-flex;align-items:center;gap:9px;margin-bottom:22px;
+  }
+  .eyebrow::before{content:"";width:30px;height:2px;background:var(--coral)}
+  h1{
+    font-family:var(--display);font-weight:800;letter-spacing:-.02em;line-height:1;
+    font-size:clamp(2.7rem,8vw,5.4rem);max-width:14ch;
+  }
+  h1 .hl{position:relative;white-space:nowrap}
+  h1 .hl::after{
+    content:"";position:absolute;left:-2px;right:-2px;bottom:.08em;height:.32em;z-index:-1;
+    background:var(--teal);opacity:.92;border-radius:3px;
+    transform-origin:left center;transform:rotate(-1.2deg) scaleX(0);
+    animation:hlIn .55s cubic-bezier(.2,.7,.2,1) .62s forwards;
+  }
+  .lede{font-size:clamp(1.05rem,2vw,1.25rem);color:var(--ink-soft);max-width:46ch;margin:26px 0 32px}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .btn{
+    font-family:var(--mono);font-size:.82rem;text-transform:uppercase;letter-spacing:.03em;font-weight:500;
+    padding:15px 26px;border-radius:100px;transition:transform .2s,box-shadow .2s;
+  }
+  .btn-primary{background:var(--coral);color:#fff;box-shadow:var(--shadow)}
+  .btn-primary:hover{transform:translateY(-3px)}
+  .btn-ghost{border:1.5px solid var(--ink);color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper)}
+
+  /* animación de entrada de la cabecera */
+  @keyframes heroIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+  @keyframes hlIn{to{transform:rotate(-1.2deg) scaleX(1)}}
+  header .eyebrow,header h1,header .lede,header .btn-row,header .marquee{opacity:0;animation:heroIn .7s cubic-bezier(.2,.7,.2,1) forwards}
+  header .eyebrow{animation-delay:.05s}
+  header h1{animation-delay:.16s}
+  header .lede{animation-delay:.30s}
+  header .btn-row{animation-delay:.42s}
+  header .marquee{animation-delay:.54s}
+
+  /* ---------- MARQUEE de frames verticales (firma) ---------- */
+  .marquee{margin-top:64px;overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+  .marquee-track{display:flex;gap:18px;width:max-content;animation:slide 38s linear infinite}
+  .marquee:hover .marquee-track{animation-play-state:paused}
+  @keyframes slide{to{transform:translateX(calc(-50% - 9px))}}
+  .frame{
+    width:172px;aspect-ratio:9/16;border-radius:18px;flex:none;position:relative;overflow:hidden;
+    box-shadow:var(--shadow);border:1px solid rgba(0,0,0,.05);
+  }
+  .frame .tag{
+    position:absolute;top:10px;left:10px;font-family:var(--mono);font-size:.62rem;font-weight:500;
+    text-transform:uppercase;letter-spacing:.04em;background:rgba(255,255,255,.92);
+    color:var(--ink);padding:4px 9px;border-radius:100px;
+  }
+  .frame .play{
+    position:absolute;inset:0;margin:auto;width:46px;height:46px;border-radius:50%;
+    background:rgba(255,255,255,.92);display:grid;place-items:center;
+  }
+  .frame .play::after{content:"";border-left:13px solid var(--ink);border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:3px}
+  .f-coral{background:linear-gradient(150deg,#A66BFF,#6B21D9)}
+  .f-teal{background:linear-gradient(150deg,#3FD9DF,#0E9DA6)}
+  .f-violet{background:linear-gradient(150deg,#9B6BFF,#13B6BE)}
+  .f-amber{background:linear-gradient(150deg,#5FE0E6,#15A6C0)}
+  .f-ink{background:linear-gradient(150deg,#4A2E7A,#1B1433)}
+
+  /* ---------- secciones ---------- */
+  section{padding:72px 0}
+  .sec-head{max-width:54ch;margin-bottom:42px}
+  .sec-eyebrow{font-family:var(--mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.09em;color:var(--ink-soft);display:block;margin-bottom:12px}
+  h2{font-family:var(--display);font-weight:700;letter-spacing:-.02em;font-size:clamp(1.9rem,4.5vw,2.9rem);line-height:1.05}
+  .sec-head p{color:var(--ink-soft);margin-top:14px;font-size:1.05rem}
+
+  /* ABOUT */
+  .about{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:54px;align-items:center}
+  .about-grid h2{margin-bottom:18px}
+  .about-grid p{color:var(--ink-soft);font-size:1.08rem;margin-bottom:16px}
+  .about-grid p strong{color:var(--ink);font-weight:600}
+  .stats{display:flex;gap:34px;margin-top:28px;flex-wrap:wrap}
+  .stat .n{font-family:var(--display);font-weight:800;font-size:2rem;color:var(--coral);line-height:1}
+  .stat .l{font-family:var(--mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft);margin-top:6px}
+  .about-frames{display:flex;gap:16px;justify-content:flex-end}
+  .about-frames .frame{width:150px}
+  .about-frames .frame:nth-child(2){transform:translateY(26px) rotate(3deg)}
+  .about-frames .frame:nth-child(1){transform:rotate(-3deg)}
+
+  /* PROCESO */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .step{border:1px solid var(--line);border-radius:20px;padding:28px 26px;background:#fff}
+  .step-n{font-family:var(--display);font-weight:800;font-size:2.1rem;color:var(--teal);line-height:1;display:block;margin-bottom:14px}
+  .step h4{font-family:var(--display);font-weight:700;font-size:1.2rem;margin-bottom:8px;letter-spacing:-.01em}
+  .step p{color:var(--ink-soft);font-size:.97rem}
+  @media(max-width:820px){.steps{grid-template-columns:1fr}}
+
+  /* NICHO */
+  .niche + .niche{padding-top:0}
+  .niche-top{display:flex;align-items:center;gap:16px;margin-bottom:26px;flex-wrap:wrap}
+  .niche-ico{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;flex:none}
+  .niche-ico svg{width:23px;height:23px}
+  .niche-ico.belleza{background:color-mix(in srgb,var(--coral) 12%,#fff);color:var(--coral)}
+  .niche-ico.hogar{background:color-mix(in srgb,var(--teal) 16%,#fff);color:#0E9DA6}
+  .niche-ico.tech{background:color-mix(in srgb,var(--violet) 14%,#fff);color:var(--violet)}
+  .pill{font-family:var(--mono);font-size:.72rem;font-weight:500;text-transform:uppercase;letter-spacing:.05em;color:#fff;padding:6px 13px;border-radius:100px}
+  .pill.belleza{background:var(--coral)}
+  .pill.hogar{background:var(--teal)}
+  .pill.tech{background:linear-gradient(120deg,var(--coral),var(--teal))}
+  .niche-top h3{font-family:var(--display);font-weight:700;font-size:clamp(1.5rem,3.5vw,2.1rem);letter-spacing:-.02em}
+  .niche-top .desc{color:var(--ink-soft);flex:1 1 280px;min-width:240px}
+  .row{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px}
+  .card{
+    aspect-ratio:9/16;border-radius:20px;position:relative;overflow:hidden;box-shadow:var(--shadow);
+    border:1px solid rgba(0,0,0,.05);transition:transform .3s ease;
+  }
+  .card:hover{transform:translateY(-8px)}
+  .card .play{position:absolute;inset:0;margin:auto;width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center}
+  .card .play::after{content:"";border-left:15px solid var(--ink);border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:3px}
+  .card .cap{position:absolute;left:0;right:0;bottom:0;padding:34px 16px 14px;color:#fff;font-weight:600;font-size:.95rem;text-shadow:0 1px 6px rgba(0,0,0,.45);background:linear-gradient(transparent,rgba(0,0,0,.78))}
+  .card .cap small{display:block;font-family:var(--mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.04em;opacity:.9;margin-bottom:3px;font-weight:400}
+
+  /* FOTOS (mosaico) */
+  .photo-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:168px;gap:14px;grid-auto-flow:dense}
+  .photo{border-radius:16px;position:relative;overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(0,0,0,.05);transition:transform .35s ease}
+  .photo:hover{transform:scale(1.015)}
+  .photo.big{grid-column:span 2;grid-row:span 2}
+  .photo.tall{grid-row:span 2}
+  .photo.wide{grid-column:span 2}
+  .photo .ptag{position:absolute;bottom:10px;left:10px;font-family:var(--mono);font-size:.64rem;font-weight:500;text-transform:uppercase;letter-spacing:.04em;background:rgba(255,255,255,.92);color:var(--ink);padding:4px 9px;border-radius:100px}
+  @media(max-width:980px){.photo-grid{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:680px){.photo-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}.photo.big{grid-row:span 2}}
+
+  /* FORMATOS (en fila) */
+  .formats{background:var(--ink);color:var(--paper)}
+  .formats .sec-eyebrow{color:#CBBEF2}
+  .formats h2{color:var(--paper)}
+  .formats .sec-head p{color:#D2CBE8}
+  .fmt-grid{display:flex;gap:1px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12);border-radius:20px;overflow:hidden}
+  .fmt{background:var(--ink);padding:26px 22px;flex:1 1 0;min-width:0}
+  .fmt .num{font-family:var(--mono);font-size:.78rem;color:var(--teal);font-weight:500;letter-spacing:.04em}
+  .fmt h4{font-family:var(--display);font-weight:700;font-size:1.12rem;margin:14px 0 8px;letter-spacing:-.01em}
+  .fmt p{color:#C5BDDD;font-size:.92rem}
+
+  /* DECO: glows del hero */
+  header .wrap{position:relative;z-index:1}
+  .hero-glow{position:absolute;border-radius:50%;filter:blur(72px);z-index:0;pointer-events:none}
+  .hero-glow.g1{width:360px;height:360px;background:radial-gradient(circle,#9B6BFF,transparent 68%);opacity:.45;top:-70px;right:-40px}
+  .hero-glow.g2{width:300px;height:300px;background:radial-gradient(circle,#12BEC6,transparent 68%);opacity:.32;top:150px;left:-90px}
+  @media(max-width:820px){.hero-glow{filter:blur(50px)}.hero-glow.g1{width:230px;height:230px}.hero-glow.g2{display:none}}
+
+  /* ICONOS proceso */
+  .step-ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;margin-bottom:16px;background:color-mix(in srgb,var(--coral) 12%,#fff);color:var(--coral)}
+  .step:nth-child(2) .step-ico{background:color-mix(in srgb,var(--teal) 16%,#fff);color:#0E9DA6}
+  .step-ico svg{width:24px;height:24px}
+
+  /* ICONOS formatos */
+  .fmt-ico{color:var(--teal);margin-bottom:10px;display:block}
+  .fmt-ico svg{width:28px;height:28px}
+
+  /* media + lightbox + faq */
+  .card{cursor:pointer}
+  .card .thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .photo{cursor:pointer}
+  .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .frame .thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .frame[data-video]{cursor:pointer}
+
+  .lightbox{position:fixed;inset:0;z-index:100;background:rgba(20,15,35,.86);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:24px}
+  .lightbox.open{display:flex}
+  .lb-content{max-width:92vw;max-height:88vh;display:flex}
+  .lb-content img,.lb-content video{max-width:92vw;max-height:88vh;border-radius:14px;box-shadow:0 30px 70px -20px rgba(0,0,0,.6);background:#000}
+  .lb-close{position:absolute;top:18px;right:22px;width:46px;height:46px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:var(--ink);font-size:1.7rem;cursor:pointer;line-height:1;display:grid;place-items:center}
+
+  .faq{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+  .faq details{border:1px solid var(--line);border-radius:14px;padding:0 20px;margin:0;background:#fff;transition:border-color .2s}
+  .faq details[open]{border-color:var(--coral)}
+  .faq summary{list-style:none;cursor:pointer;padding:18px 0;font-family:var(--display);font-weight:600;font-size:1.05rem;display:flex;justify-content:space-between;align-items:center;gap:16px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";font-family:var(--body);font-weight:400;font-size:1.6rem;color:var(--coral);transition:transform .25s;line-height:1}
+  .faq details[open] summary::after{transform:rotate(45deg)}
+  .faq details p{color:var(--ink-soft);padding:0 0 18px;font-size:.98rem;margin:0;max-width:64ch}
+  @media(max-width:760px){.faq{grid-template-columns:1fr}}
+
+  /* OTROS PROYECTOS */
+  .also{background:var(--paper-2);border-top:1px solid var(--line)}
+  .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .proj{display:block;border:1px solid var(--line);border-radius:18px;padding:26px;background:#fff;transition:transform .25s,box-shadow .25s,border-color .25s}
+  .proj:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--coral)}
+  .proj .peyebrow{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--coral)}
+  .proj h4{font-family:var(--display);font-weight:700;font-size:1.25rem;margin:10px 0 8px;letter-spacing:-.01em}
+  .proj p{color:var(--ink-soft);font-size:.95rem;margin-bottom:14px}
+  .proj .go{font-family:var(--mono);font-size:.78rem;font-weight:500;color:var(--ink)}
+  .proj:hover .go{color:var(--coral)}
+  .linkedin-wrap{margin-top:26px;display:flex;justify-content:center}
+  .linkedin-btn{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--paper);padding:14px 24px;border-radius:100px;font-family:var(--mono);font-size:.82rem;text-transform:uppercase;letter-spacing:.04em;transition:transform .2s,background .2s}
+  .linkedin-btn:hover{transform:translateY(-2px);background:var(--coral)}
+  .linkedin-btn svg{width:18px;height:18px}
+  @media(max-width:820px){.proj-grid{grid-template-columns:1fr}}
+
+  /* CONTACTO */
+  .contact{text-align:center;padding:96px 0}
+  .contact h2{font-size:clamp(2.1rem,6vw,3.6rem);max-width:16ch;margin:0 auto 18px}
+  .contact p{color:var(--ink-soft);max-width:42ch;margin:0 auto 34px;font-size:1.1rem}
+  .mailto{
+    font-family:var(--display);font-weight:800;font-size:clamp(1.3rem,4vw,2rem);color:var(--ink);
+    border-bottom:3px solid var(--coral);padding-bottom:4px;transition:color .2s
+  }
+  .mailto:hover{color:var(--coral)}
+
+  footer{border-top:1px solid var(--line);padding:30px 0}
+  footer .f-in{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+  footer .brand{font-size:1.15rem}
+  footer .meta{font-family:var(--mono);font-size:.76rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:820px){
+    .nav-links{
+      position:fixed;inset:64px 0 auto 0;background:var(--paper);flex-direction:column;gap:0;
+      border-bottom:1px solid var(--line);padding:8px 0;transform:translateY(-130%);transition:transform .3s;
+    }
+    .nav-links.open{transform:none}
+    .nav-links a{padding:14px 6vw;width:100%}
+    .nav-links .nav-cta{margin:10px 6vw;text-align:center}
+    .burger{display:flex}
+    .about-grid{grid-template-columns:1fr;gap:36px}
+    .about-frames{justify-content:flex-start}
+    .row{grid-template-columns:repeat(3,78%);grid-auto-flow:column;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;-webkit-overflow-scrolling:touch}
+    .row .card{scroll-snap-align:start}
+    .niche-top .desc{flex-basis:100%}
+    .fmt-grid{overflow-x:auto}
+    .fmt{flex:0 0 68%}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .marquee-track{animation:none}
+    .reveal{transition:none;opacity:1;transform:none}
+    header .eyebrow,header h1,header .lede,header .btn-row,header .marquee{animation:none;opacity:1}
+    h1 .hl::after{animation:none;transform:rotate(-1.2deg)}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <a href="#top" class="brand">li<b>crat</b></a>
+    <div class="nav-links" id="navlinks">
+      <a href="#sobre">Sobre mí</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#belleza">Trabajos</a>
+      <a href="#fotos">Fotos</a>
+      <a href="#formatos">Formatos</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contacto" class="nav-cta">Hablemos</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<main>
+<header id="top">
+  <div class="hero-glow g1" aria-hidden="true"></div>
+  <div class="hero-glow g2" aria-hidden="true"></div>
+  <div class="wrap">
+    <span class="eyebrow">Creación de contenido UGC</span>
+    <h1>Vídeos que <span class="hl">no parecen</span> anuncios.</h1>
+    <p class="lede">Contenido en vídeo y foto para marcas de belleza, hogar y tech. Grabado para que tu cliente piense “esto lo necesito”, no “esto es publicidad”.</p>
+    <div class="btn-row">
+      <a href="#contacto" class="btn btn-primary">Pídeme un vídeo</a>
+      <a href="#belleza" class="btn btn-ghost">Ver trabajos</a>
+    </div>
+
+    <!-- FIRMA: feed de vídeos verticales. Sustituye cada .frame por un embed real cuando tengas los vídeos. -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <div class="frame f-coral" data-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"><img class="thumb" src="https://picsum.photos/seed/herob/360/640" alt=""><span class="tag">Belleza</span><span class="play"></span></div>
+        <div class="frame f-teal" data-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"><img class="thumb" src="https://picsum.photos/seed/heroh/360/640" alt=""><span class="tag">Hogar</span><span class="play"></span></div>
+        <div class="frame f-violet" data-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"><img class="thumb" src="https://picsum.photos/seed/herot/360/640" alt=""><span class="tag">Tech</span><span class="play"></span></div>
+        <div class="frame f-ink" data-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"><img class="thumb" src="https://picsum.photos/seed/herod/360/640" alt=""><span class="tag">Demo</span><span class="play"></span></div>
+        <div class="frame f-amber" data-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"><img class="thumb" src="https://picsum.photos/seed/herou/360/640" alt=""><span class="tag">Unboxing</span><span class="play"></span></div>
+        <div class="frame f-teal" data-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"><img class="thumb" src="https://picsum.photos/seed/heroa/360/640" alt=""><span class="tag">Antes/después</span><span class="play"></span></div>
+        <!-- duplicado para el bucle infinito -->
+        <div class="frame f-coral" data-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"><img class="thumb" src="https://picsum.photos/seed/herob/360/640" alt=""><span class="tag">Belleza</span><span class="play"></span></div>
+        <div class="frame f-teal" data-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"><img class="thumb" src="https://picsum.photos/seed/heroh/360/640" alt=""><span class="tag">Hogar</span><span class="play"></span></div>
+        <div class="frame f-violet" data-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"><img class="thumb" src="https://picsum.photos/seed/herot/360/640" alt=""><span class="tag">Tech</span><span class="play"></span></div>
+        <div class="frame f-ink" data-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"><img class="thumb" src="https://picsum.photos/seed/herod/360/640" alt=""><span class="tag">Demo</span><span class="play"></span></div>
+        <div class="frame f-amber" data-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"><img class="thumb" src="https://picsum.photos/seed/herou/360/640" alt=""><span class="tag">Unboxing</span><span class="play"></span></div>
+        <div class="frame f-teal" data-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"><img class="thumb" src="https://picsum.photos/seed/heroa/360/640" alt=""><span class="tag">Antes/después</span><span class="play"></span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="about" id="sobre">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <span class="sec-eyebrow">Detrás de licrat</span>
+      <h2>No verás mi cara. Verás tu producto.</h2>
+      <p>Soy <strong>Arancha</strong>, desarrolladora web senior y, además, me apasionan la creación de contenido y las redes sociales. Hago UGC desde <strong>Madrid</strong>.</p>
+      <p>Mi lado técnico juega a tu favor: entiendo cómo funciona lo digital, cuido cada detalle y sé qué hace que un vídeo convierta, no solo que se vea bonito.</p>
+      <p>Trabajo sin salir en cámara: manos, producto, voz en off y los planos justos para que cada pieza se sienta como una recomendación sincera. Todo en vertical, montado, con subtítulos y listo para TikTok, Reels o tus campañas.</p>
+      <div class="stats">
+        <div class="stat"><div class="n">9:16</div><div class="l">Formato nativo</div></div>
+        <div class="stat"><div class="n">48-72h</div><div class="l">Entrega habitual</div></div>
+        <div class="stat"><div class="n">Madrid</div><div class="l">Base</div></div>
+      </div>
+    </div>
+    <div class="about-frames reveal" aria-hidden="true">
+      <div class="frame f-violet" data-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4"><img class="thumb" src="https://picsum.photos/seed/about1/320/540" alt=""><span class="play"></span></div>
+      <div class="frame f-coral" data-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCarCanYouGetForAGrand.mp4"><img class="thumb" src="https://picsum.photos/seed/about2/320/540" alt=""><span class="play"></span></div>
+    </div>
+  </div>
+</section>
+
+<section id="proceso">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-eyebrow">Cómo trabajo</span>
+      <h2>De tu producto a un vídeo listo para publicar.</h2>
+      <p>Un proceso simple: tú me mandas el producto y yo me encargo del resto.</p>
+    </div>
+    <div class="steps reveal">
+      <div class="step"><div class="step-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12h6M9 16h4"/></svg></div><h4>01 · Brief</h4><p>Me cuentas qué quieres promocionar, el tono y dónde se publicará. Acordamos formato, número de vídeos y entregables.</p></div>
+      <div class="step"><div class="step-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3z"/></svg></div><h4>02 · Grabación y montaje</h4><p>Grabo el producto en vertical con guion, sonido limpio y los planos que venden. Edito con subtítulos, música y ritmo.</p></div>
+      <div class="step"><div class="step-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 3L10 14"/><path d="M21 3l-7 18-4-7-7-4z"/></svg></div><h4>03 · Entrega</h4><p>Recibes el vídeo listo para subir, con una ronda de ajustes incluida. Normalmente en 48-72h.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="niche" id="belleza">
+  <div class="wrap">
+    <div class="niche-top reveal">
+      <div class="niche-ico belleza"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.4L18 9l-4.1 1.6L12 15l-1.9-4.4L6 9l4.1-1.6z"/></svg></div>
+      <span class="pill belleza">01 · Belleza</span>
+      <h3>Belleza</h3>
+      <p class="desc">Skincare, maquillaje y cuidado personal. Demos, antes/después y reseñas que enamoran.</p>
+    </div>
+    <div class="row reveal">
+      <!-- EJEMPLOS: sustituye data-video por el enlace de tu vídeo y el <img> por tu miniatura (o usa el embed de TikTok). Mira el comentario final. -->
+      <div class="card" data-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"><img class="thumb" src="https://picsum.photos/seed/belleza1/400/710" alt=""><span class="play"></span><div class="cap"><small>Antes · Después</small>La piel en 30 segundos</div></div>
+      <div class="card" data-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"><img class="thumb" src="https://picsum.photos/seed/belleza2/400/710" alt=""><span class="play"></span><div class="cap"><small>POV · Demo</small>Mi rutina con el producto</div></div>
+      <div class="card" data-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"><img class="thumb" src="https://picsum.photos/seed/belleza3/400/710" alt=""><span class="play"></span><div class="cap"><small>Reseña · 3 razones</small>Por qué lo repito</div></div>
+      <div class="card" data-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"><img class="thumb" src="https://picsum.photos/seed/belleza4/400/710" alt=""><span class="play"></span><div class="cap"><small>Tutorial</small>Cómo aplicarlo bien</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="niche" id="hogar">
+  <div class="wrap">
+    <div class="niche-top reveal">
+      <div class="niche-ico hogar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-7 8 7"/><path d="M6 10v9h12v-9"/><path d="M10 19v-5h4v5"/></svg></div>
+      <span class="pill hogar">02 · Hogar</span>
+      <h3>Hogar</h3>
+      <p class="desc">Decoración, organización y pequeños gadgets de casa. Lo útil, hecho irresistible.</p>
+    </div>
+    <div class="row reveal">
+      <div class="card" data-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"><img class="thumb" src="https://picsum.photos/seed/hogar1/400/710" alt=""><span class="play"></span><div class="cap"><small>Antes · Después</small>El orden en un vídeo</div></div>
+      <div class="card" data-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"><img class="thumb" src="https://picsum.photos/seed/hogar2/400/710" alt=""><span class="play"></span><div class="cap"><small>Problema · Solución</small>Adiós al desorden</div></div>
+      <div class="card" data-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4"><img class="thumb" src="https://picsum.photos/seed/hogar3/400/710" alt=""><span class="play"></span><div class="cap"><small>Unboxing</small>Lo montamos juntos</div></div>
+      <div class="card" data-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"><img class="thumb" src="https://picsum.photos/seed/hogar4/400/710" alt=""><span class="play"></span><div class="cap"><small>POV · Demo</small>Un día usándolo</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="niche" id="tech">
+  <div class="wrap">
+    <div class="niche-top reveal">
+      <div class="niche-ico tech"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 18h2"/></svg></div>
+      <span class="pill tech">03 · Tech</span>
+      <h3>Tech</h3>
+      <p class="desc">Gadgets, accesorios y dispositivos. Demos claras que convierten la curiosidad en compra.</p>
+    </div>
+    <div class="row reveal">
+      <div class="card" data-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4"><img class="thumb" src="https://picsum.photos/seed/tech1/400/710" alt=""><span class="play"></span><div class="cap"><small>Unboxing</small>Primer contacto</div></div>
+      <div class="card" data-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"><img class="thumb" src="https://picsum.photos/seed/tech2/400/710" alt=""><span class="play"></span><div class="cap"><small>Demo</small>Cómo funciona de verdad</div></div>
+      <div class="card" data-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4"><img class="thumb" src="https://picsum.photos/seed/tech3/400/710" alt=""><span class="play"></span><div class="cap"><small>Reseña · 3 razones</small>Por qué vale la pena</div></div>
+      <div class="card" data-video="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCarCanYouGetForAGrand.mp4"><img class="thumb" src="https://picsum.photos/seed/tech4/400/710" alt=""><span class="play"></span><div class="cap"><small>Antes · Después</small>Mi setup mejorado</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="fotos">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-eyebrow">Fotografía UGC</span>
+      <h2>También fotos para tus productos.</h2>
+      <p>Imágenes con estilo para fichas de producto, anuncios y redes. Mismo cuidado, en formato foto.</p>
+    </div>
+    <!-- EJEMPLOS: sustituye el <img> por tu foto y data-full por la versión grande. Conserva las clases big/tall/wide para el tamaño. -->
+    <div class="photo-grid reveal">
+      <div class="photo big" data-full="https://picsum.photos/seed/foto1/1200/1400"><img src="https://picsum.photos/seed/foto1/700/800" alt="Foto UGC de producto de belleza"><span class="ptag">Belleza</span></div>
+      <div class="photo tall" data-full="https://picsum.photos/seed/foto2/1000/1500"><img src="https://picsum.photos/seed/foto2/500/750" alt="Foto UGC de producto para el hogar"><span class="ptag">Hogar</span></div>
+      <div class="photo" data-full="https://picsum.photos/seed/foto3/1100/1100"><img src="https://picsum.photos/seed/foto3/500/500" alt="Foto UGC de producto tecnológico"><span class="ptag">Tech</span></div>
+      <div class="photo" data-full="https://picsum.photos/seed/foto4/1100/1100"><img src="https://picsum.photos/seed/foto4/500/500" alt="Flat lay de producto para redes"><span class="ptag">Flat lay</span></div>
+      <div class="photo wide" data-full="https://picsum.photos/seed/foto5/1400/900"><img src="https://picsum.photos/seed/foto5/800/500" alt="Foto de detalle de producto"><span class="ptag">Detalle</span></div>
+      <div class="photo" data-full="https://picsum.photos/seed/foto6/1100/1100"><img src="https://picsum.photos/seed/foto6/500/500" alt="Foto lifestyle de producto en uso"><span class="ptag">Lifestyle</span></div>
+      <div class="photo" data-full="https://picsum.photos/seed/foto7/1100/1100"><img src="https://picsum.photos/seed/foto7/500/500" alt="Foto de producto para ficha y anuncios"><span class="ptag">Producto</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="formats" id="formatos">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-eyebrow">Lo que grabo</span>
+      <h2>Formatos que venden.</h2>
+      <p>Cada producto pide algo distinto. Estos son los que mejor convierten, y los adapto a tu brief.</p>
+    </div>
+    <div class="fmt-grid reveal">
+      <div class="fmt"><span class="fmt-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></span><h4>POV “lo probé”</h4><p>El producto en uso real, en primera persona. Cercano y creíble.</p></div>
+      <div class="fmt"><span class="fmt-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.2L18 9l-4.2 1.8L12 15l-1.8-4.2L6 9l4.2-1.8z"/><path d="M18 14l.8 1.9 1.9.8-1.9.8L18 20l-.8-1.7-1.9-.8 1.9-.8z"/></svg></span><h4>Antes / después</h4><p>La transformación a la vista. El resultado se vende solo.</p></div>
+      <div class="fmt"><span class="fmt-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.2 1 2.5h6c0-1.3.3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg></span><h4>Problema → solución</h4><p>La molestia y por qué tu producto la resuelve.</p></div>
+      <div class="fmt"><span class="fmt-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg></span><h4>Unboxing</h4><p>La expectativa de abrir la caja, con detalle y buen sonido.</p></div>
+      <div class="fmt"><span class="fmt-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.7 5.5 6 .9-4.4 4.2 1 6-5.3-2.8L6.4 19.6l1-6L3 9.4l6-.9z"/></svg></span><h4>Reseña 3 razones</h4><p>Formato listicle, ágil, desde varios ángulos.</p></div>
+      <div class="fmt"><span class="fmt-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 9l5 3-5 3z"/></svg></span><h4>Tutorial</h4><p>Cómo se usa, paso a paso, para resolver dudas y vender.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-eyebrow">Dudas frecuentes</span>
+      <h2>FAQ para marcas.</h2>
+      <p>Lo que suelen preguntarme antes de empezar a trabajar juntos.</p>
+    </div>
+    <div class="faq reveal">
+      <details><summary>¿Qué necesito enviarte?</summary><p>Solo dos cosas: el producto y un brief breve donde me cuentes qué quieres destacar, a quién te diriges, el tono que buscas y dónde lo vas a publicar. Si tienes referencias de vídeos que te gusten, mejor todavía. Con eso preparo el guion y me pongo a grabar; no necesitas nada más por tu parte.</p></details>
+      <details><summary>¿Cuánto tardas en entregar?</summary><p>Lo habitual son entre 48 y 72 horas desde que recibo el producto y el brief, aunque puede variar según la carga de trabajo del momento y el número de vídeos. Si tienes una fecha límite concreta —un lanzamiento, una campaña— dímelo al principio y organizo el calendario para llegar a tiempo.</p></details>
+      <details><summary>¿Incluye derechos de uso?</summary><p>Por defecto, el vídeo es para que lo uses en tus redes orgánicas: tu perfil, stories, etc. Si quieres emplearlo en anuncios de pago, hacer whitelisting con mi cuenta o difundirlo durante más tiempo o en más canales, lo acordamos aparte antes de empezar para que todo quede claro y por escrito.</p></details>
+      <details><summary>¿Puedo pedir cambios?</summary><p>Sí. Cada vídeo incluye una ronda de ajustes: cambios de ritmo, de música, de subtítulos o de algún plano concreto. Mi objetivo es que quede exactamente como lo necesitas. Si más adelante quisieras una revisión adicional o cambios mayores, lo vemos sin problema.</p></details>
+      <details><summary>¿Apareces en cámara?</summary><p>No, trabajo en formato faceless: protagonizan tus manos, el producto y la voz en off, que es justo lo que mejor convierte en contenido de producto y lo que da esa sensación de recomendación real. Si tu campaña necesita un rostro concreto, lo hablamos y busco la mejor solución para tu caso.</p></details>
+      <details><summary>¿Trabajas con marcas fuera de España?</summary><p>Sí, sin problema, siempre que el contenido sea en español. Todo el proceso se gestiona en remoto: me envías el producto, acordamos el brief por mensaje o videollamada y te entrego los vídeos por enlace. La distancia no es un obstáculo.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="wrap reveal">
+    <h2>¿Tienes un producto que contar?</h2>
+    <p>Mándame qué quieres promocionar y te propongo el formato. Respuesta rápida.</p>
+    <!-- Cambia este correo por el tuyo real -->
+    <a class="mailto" href="mailto:licrat@gmail.com">licrat@gmail.com</a>
+  </div>
+</section>
+
+<section class="also" id="proyectos">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-eyebrow">Más allá del UGC</span>
+      <h2>Soy multidisciplinar.</h2>
+      <p>Cuando no estoy grabando, programo software y diseño mis propios productos digitales. Estos son algunos de mis otros proyectos.</p>
+    </div>
+    <div class="proj-grid reveal">
+      <a class="proj" href="https://apitropia.com/" target="_blank" rel="noopener">
+        <span class="peyebrow">Estudio de software</span>
+        <h4>Apitropia</h4>
+        <p>Estudio independiente donde diseño y opero mis propios productos: APIs y herramientas afiladas, sin florituras.</p>
+        <span class="go">Visitar →</span>
+      </a>
+      <a class="proj" href="https://winnow.apitropia.com/?lang=en" target="_blank" rel="noopener">
+        <span class="peyebrow">API · Producto</span>
+        <h4>Winnow</h4>
+        <p>API de calidad de datos y antifraude para encuestas: detecta bots, duplicados y respuestas basura en milisegundos.</p>
+        <span class="go">Visitar →</span>
+      </a>
+      <a class="proj" href="https://www.etsy.com/shop/ahorrostudio/" target="_blank" rel="noopener">
+        <span class="peyebrow">Tienda · Etsy</span>
+        <h4>AhorroStudio</h4>
+        <p>Plantillas imprimibles para ahorrar con el método de sobres: retos y trackers bonitos, fáciles y motivadores.</p>
+        <span class="go">Visitar →</span>
+      </a>
+    </div>
+    <div class="linkedin-wrap reveal">
+      <a class="linkedin-btn" href="https://www.linkedin.com/in/licrat/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 9.5H5.67V18h2.67V9.5zM7 5.9a1.55 1.55 0 1 0 0 3.1 1.55 1.55 0 0 0 0-3.1zM18.33 18v-4.67c0-2.5-1.34-3.66-3.12-3.66-1.44 0-2.08.79-2.44 1.35V9.5h-2.67V18h2.67v-4.5c0-.24.02-.48.09-.65.19-.48.63-.98 1.37-.98.97 0 1.36.74 1.36 1.82V18h2.74z"/></svg> Conóceme en LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap f-in">
+    <span class="brand">li<b>crat</b></span>
+    <span class="meta">Contenido UGC · Vídeo y foto · Madrid</span>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lb-close" id="lbClose" aria-label="Cerrar">&times;</button>
+  <div class="lb-content" id="lbContent"></div>
+</div>
+
+<script>
+  // menú móvil
+  const burger=document.getElementById('burger');
+  const links=document.getElementById('navlinks');
+  burger.addEventListener('click',()=>links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+
+  // reveal al hacer scroll
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // lightbox (popup para ver vídeos y fotos en grande)
+  const lb=document.getElementById('lightbox');
+  const lbc=document.getElementById('lbContent');
+  function openLB(html){lbc.innerHTML=html;lb.classList.add('open');lb.setAttribute('aria-hidden','false');}
+  function closeLB(){lb.classList.remove('open');lb.setAttribute('aria-hidden','true');lbc.innerHTML='';}
+  document.querySelectorAll('[data-video]').forEach(el=>el.addEventListener('click',()=>openLB('<video src="'+el.dataset.video+'" controls autoplay playsinline></video>')));
+  document.querySelectorAll('[data-full]').forEach(el=>el.addEventListener('click',()=>openLB('<img src="'+el.dataset.full+'" alt="">')));
+  document.getElementById('lbClose').addEventListener('click',closeLB);
+  lb.addEventListener('click',e=>{if(e.target===lb)closeLB();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB();});
+</script>
+
+<!--
+==================================================================
+ CÓMO PONER TUS VÍDEOS Y FOTOS REALES
+==================================================================
+ AHORA hay imágenes (picsum.photos) y vídeos (sample de Google) de
+ EJEMPLO, solo para que veas el popup funcionando. Sustitúyelos por
+ los tuyos. El popup (lightbox) se activa solo: con data-video en las
+ tarjetas y data-full en las fotos.
+
+ VÍDEOS — cada <div class="card" data-video="..."> es un vídeo:
+   - Cambia data-video por el enlace de TU vídeo .mp4 (p. ej. videos/mi-video.mp4
+     si lo subes junto a este archivo) y el <img class="thumb"> por tu miniatura.
+   - ¿Prefieres TikTok? Usa el embed: en el vídeo, Compartir > Insertar,
+     pega el <blockquote class="tiktok-embed">...</blockquote> en lugar de la card
+     y añade UNA vez, antes de </body>:
+     <script async src="https://www.tiktok.com/embed.js"><\/script>
+
+ FOTOS — cada <div class="photo" data-full="..."> es una foto:
+   - Cambia el <img src="..."> por tu foto y data-full por la versión grande
+     (la que se abre en el popup). Conserva las clases big/tall/wide para el tamaño.
+   - Sube tus imágenes en una carpeta "fotos" junto a este archivo.
+
+ Acuérdate también de cambiar el correo si hace falta.
+==================================================================
+-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://licrat.com/#arancha",
+      "name": "Arancha",
+      "jobTitle": "Creadora de contenido UGC y desarrolladora web",
+      "url": "https://licrat.com/",
+      "address": { "@type": "PostalAddress", "addressLocality": "Madrid", "addressCountry": "ES" },
+      "sameAs": [
+        "https://www.linkedin.com/in/licrat/",
+        "https://apitropia.com/",
+        "https://www.etsy.com/shop/ahorrostudio/"
+      ]
+    },
+    {
+      "@type": "ProfessionalService",
+      "name": "licrat — Contenido UGC",
+      "description": "Creación de contenido UGC en vídeo y foto para marcas de belleza, hogar y tecnología. Formato vertical, montado y listo para publicar.",
+      "url": "https://licrat.com/",
+      "image": "https://licrat.com/og-image.jpg",
+      "email": "licrat@gmail.com",
+      "areaServed": { "@type": "Country", "name": "España" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Madrid", "addressCountry": "ES" },
+      "founder": { "@id": "https://licrat.com/#arancha" },
+      "knowsAbout": ["Contenido UGC", "Marketing de marca", "Vídeo vertical", "Fotografía de producto"]
+    },
+    {
+      "@type": "WebSite",
+      "name": "licrat",
+      "url": "https://licrat.com/",
+      "inLanguage": "es-ES"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "¿Qué necesito enviarte?", "acceptedAnswer": { "@type": "Answer", "text": "El producto y un brief breve: qué quieres destacar, a quién te diriges, el tono y dónde se publicará. Con eso preparo el guion y me pongo a grabar." } },
+        { "@type": "Question", "name": "¿Cuánto tardas en entregar?", "acceptedAnswer": { "@type": "Answer", "text": "Normalmente entre 48 y 72 horas desde que recibo el producto y el brief, según la carga de trabajo y el número de vídeos. Si tienes una fecha límite, organizo el calendario para llegar a tiempo." } },
+        { "@type": "Question", "name": "¿Incluye derechos de uso?", "acceptedAnswer": { "@type": "Answer", "text": "Por defecto el vídeo es para tus redes orgánicas. Para anuncios de pago, whitelisting o usos más amplios, lo acordamos aparte antes de empezar." } },
+        { "@type": "Question", "name": "¿Puedo pedir cambios?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Cada vídeo incluye una ronda de ajustes (ritmo, música, subtítulos o algún plano) para que quede exactamente como lo necesitas." } },
+        { "@type": "Question", "name": "¿Apareces en cámara?", "acceptedAnswer": { "@type": "Answer", "text": "No, trabajo en formato faceless: manos, producto y voz en off, que es lo que mejor convierte en contenido de producto." } },
+        { "@type": "Question", "name": "¿Trabajas con marcas fuera de España?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, siempre que el contenido sea en español. Todo el proceso se gestiona en remoto." } }
+      ]
+    }
+  ]
+}
+</script>
+</body>
+</html>
