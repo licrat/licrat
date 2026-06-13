@@ -303,15 +303,15 @@
     }
     .nav-links.open{transform:none}
     .nav-links a{padding:14px 6vw;width:100%}
-    .nav-links .nav-cta{margin:10px 6vw;text-align:center}
+    .nav-links .nav-cta{margin:10px 6vw;text-align:center;width:auto;align-self:stretch}
     .burger{display:flex}
     .about-grid{grid-template-columns:1fr;gap:36px}
     .about-frames{justify-content:flex-start}
     .row{grid-template-columns:repeat(3,78%);grid-auto-flow:column;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;-webkit-overflow-scrolling:touch}
     .row .card{scroll-snap-align:start}
     .niche-top .desc{flex-basis:100%}
-    .fmt-grid{overflow-x:auto}
-    .fmt{flex:0 0 68%}
+    .fmt-grid{display:grid;grid-template-columns:1fr 1fr}
+    .fmt{padding:22px 16px}
   }
   @media(prefers-reduced-motion:reduce){
     .marquee-track{animation:none}
